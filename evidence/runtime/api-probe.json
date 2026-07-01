@@ -1,0 +1,71 @@
+{
+  "models": {
+    "object": "list",
+    "data": [
+      {
+        "id": "agents-a1-nvfp4",
+        "object": "model",
+        "created": 1782917604,
+        "owned_by": "vllm",
+        "root": "/models/Agents-A1-NVFP4",
+        "parent": null,
+        "max_model_len": 4096,
+        "permission": [
+          {
+            "id": "modelperm-97328a9659aa8cb4",
+            "object": "model_permission",
+            "created": 1782917604,
+            "allow_create_engine": false,
+            "allow_sampling": true,
+            "allow_logprobs": true,
+            "allow_search_indices": false,
+            "allow_view": true,
+            "allow_fine_tuning": false,
+            "organization": "*",
+            "group": null,
+            "is_blocking": false
+          }
+        ]
+      }
+    ]
+  },
+  "chat_completion": {
+    "id": "chatcmpl-84f7f7e45c620f65",
+    "object": "chat.completion",
+    "created": 1782917604,
+    "prompt_routed_experts": null,
+    "model": "agents-a1-nvfp4",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": null,
+          "refusal": null,
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "tool_calls": [],
+          "reasoning": "Thinking Process:\n\n1.  **Analyze the Request:** The user wants me to respond with exactly \"READY\".\n2.  **Check Constraints:**"
+        },
+        "logprobs": null,
+        "finish_reason": "length",
+        "stop_reason": null,
+        "token_ids": null,
+        "routed_experts": null
+      }
+    ],
+    "service_tier": null,
+    "system_fingerprint": "vllm-0.1.dev16581+gdda4668b5.d20260528-fe892994",
+    "usage": {
+      "prompt_tokens": 15,
+      "total_tokens": 47,
+      "completion_tokens": 32,
+      "prompt_tokens_details": null
+    },
+    "prompt_logprobs": null,
+    "prompt_token_ids": null,
+    "prompt_text": null,
+    "kv_transfer_params": null
+  }
+}
