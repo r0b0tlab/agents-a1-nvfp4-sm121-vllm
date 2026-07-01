@@ -1,0 +1,4 @@
+# Superseded local trial logs; final evidence is committed as *-v2.log and api-probe.json.
+evidence/container-audit/build.log
+evidence/container-audit/runtime-audit.log
+evidence/runtime/serve.log

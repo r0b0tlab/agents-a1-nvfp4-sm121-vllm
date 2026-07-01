@@ -199,3 +199,9 @@ AUDIT PASS: SM121 native NVFP4 runtime gates satisfied
 (APIServer pid=1) INFO:     127.0.0.1:47972 - "GET /v1/models HTTP/1.1" 200 OK
 (APIServer pid=1) INFO:     127.0.0.1:41196 - "GET /v1/models HTTP/1.1" 200 OK
 (APIServer pid=1) INFO:     127.0.0.1:44604 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:58496 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:53384 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:57400 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:52086 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:49502 - "GET /v1/models HTTP/1.1" 200 OK
+(APIServer pid=1) INFO:     127.0.0.1:57522 - "GET /v1/models HTTP/1.1" 200 OK
