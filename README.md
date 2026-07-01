@@ -45,6 +45,15 @@ See the model card in `huggingface/README.md` for the exact exclusion list and H
 └── huggingface/README.md             # model card used for upload
 ```
 
+## Published artifacts
+
+| Artifact | URL / digest |
+|---|---|
+| GitHub repo | https://github.com/r0b0tlab/agents-a1-nvfp4-sm121-vllm |
+| Hugging Face model | https://huggingface.co/r0b0tlab/Agents-A1-NVFP4 |
+| Container image | `ghcr.io/r0b0tlab/agents-a1-nvfp4-sm121-vllm:latest` |
+| Image digest | `sha256:89a686b38a3831e540ecab17043f44df7bdc3cb49ee04f59e5b0e1b86c474edc` |
+
 ## Build
 
 ```bash
@@ -53,7 +62,7 @@ docker build \
   -f docker/Dockerfile .
 ```
 
-The Dockerfile derives from the current r0b0tlab SM121 NVFP4 vLLM runtime and removes packaged fallback FlashAttention/Marlin artifacts that are not part of the publishable Agents-A1 text-only path.
+The Dockerfile derives from the current r0b0tlab SM121 NVFP4 vLLM runtime, removes packaged fallback FlashAttention/Marlin artifacts that are not part of the publishable Agents-A1 text-only path, and patches the import guard so model modules that reference `fa_utils` still load while FlashInfer remains the active runtime backend.
 
 ## Audit the image
 
