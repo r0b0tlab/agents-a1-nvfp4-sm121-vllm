@@ -1,0 +1,81 @@
+{"task_id": "HumanEval/0", "passed": true, "latency_s": 6.987931799998478, "completion_tokens": 185}
+{"task_id": "HumanEval/1", "passed": true, "latency_s": 8.135389113998826, "completion_tokens": 215}
+{"task_id": "HumanEval/3", "passed": true, "latency_s": 2.0579052150023927, "completion_tokens": 52}
+{"task_id": "HumanEval/2", "passed": true, "latency_s": 3.613152063000598, "completion_tokens": 92}
+{"task_id": "HumanEval/5", "passed": true, "latency_s": 5.470148497999617, "completion_tokens": 145}
+{"task_id": "HumanEval/4", "passed": true, "latency_s": 6.071611095001572, "completion_tokens": 159}
+{"task_id": "HumanEval/7", "passed": true, "latency_s": 4.074850028999208, "completion_tokens": 107}
+{"task_id": "HumanEval/6", "passed": true, "latency_s": 7.937419344998489, "completion_tokens": 209}
+{"task_id": "HumanEval/8", "passed": true, "latency_s": 5.724375664998661, "completion_tokens": 151}
+{"task_id": "HumanEval/9", "passed": true, "latency_s": 6.015756164000777, "completion_tokens": 158}
+{"task_id": "HumanEval/11", "passed": true, "latency_s": 4.78376771100011, "completion_tokens": 126}
+{"task_id": "HumanEval/10", "passed": true, "latency_s": 9.402738851000322, "completion_tokens": 248}
+{"task_id": "HumanEval/12", "passed": false, "latency_s": 2.6402927180024562, "completion_tokens": 68}
+{"task_id": "HumanEval/13", "passed": true, "latency_s": 3.902954713001236, "completion_tokens": 102}
+{"task_id": "HumanEval/14", "passed": true, "latency_s": 3.025037854000402, "completion_tokens": 79}
+{"task_id": "HumanEval/15", "passed": true, "latency_s": 3.348168643002282, "completion_tokens": 87}
+{"task_id": "HumanEval/16", "passed": true, "latency_s": 2.933768118000444, "completion_tokens": 76}
+{"task_id": "HumanEval/18", "passed": true, "latency_s": 3.2115277829980187, "completion_tokens": 84}
+{"task_id": "HumanEval/17", "passed": true, "latency_s": 8.285102128997096, "completion_tokens": 219}
+{"task_id": "HumanEval/19", "passed": true, "latency_s": 10.539313729001151, "completion_tokens": 280}
+{"task_id": "HumanEval/20", "passed": true, "latency_s": 12.328144988998247, "completion_tokens": 328}
+{"task_id": "HumanEval/21", "passed": true, "latency_s": 6.969161693999922, "completion_tokens": 183}
+{"task_id": "HumanEval/23", "passed": true, "latency_s": 1.863180304000707, "completion_tokens": 48}
+{"task_id": "HumanEval/22", "passed": true, "latency_s": 4.413697796000633, "completion_tokens": 114}
+{"task_id": "HumanEval/24", "passed": true, "latency_s": 4.305969999997615, "completion_tokens": 112}
+{"task_id": "HumanEval/25", "passed": true, "latency_s": 7.448089755998808, "completion_tokens": 197}
+{"task_id": "HumanEval/26", "passed": true, "latency_s": 6.250263439000264, "completion_tokens": 166}
+{"task_id": "HumanEval/28", "passed": true, "latency_s": 2.474891957001091, "completion_tokens": 65}
+{"task_id": "HumanEval/27", "passed": true, "latency_s": 3.9309406140018837, "completion_tokens": 103}
+{"task_id": "HumanEval/29", "passed": true, "latency_s": 3.9172918449985445, "completion_tokens": 102}
+{"task_id": "HumanEval/30", "passed": true, "latency_s": 5.108212819999608, "completion_tokens": 134}
+{"task_id": "HumanEval/31", "passed": true, "latency_s": 7.81263809200027, "completion_tokens": 208}
+{"task_id": "HumanEval/33", "passed": true, "latency_s": 9.471380132999911, "completion_tokens": 255}
+{"task_id": "HumanEval/34", "passed": true, "latency_s": 3.1196665550014586, "completion_tokens": 82}
+{"task_id": "HumanEval/32", "passed": true, "latency_s": 21.96102574500037, "completion_tokens": 590}
+{"task_id": "HumanEval/35", "passed": true, "latency_s": 3.5398140639990743, "completion_tokens": 92}
+{"task_id": "HumanEval/36", "passed": true, "latency_s": 2.3452144190014224, "completion_tokens": 59}
+{"task_id": "HumanEval/38", "passed": false, "latency_s": 5.220144167000399, "completion_tokens": 139}
+{"task_id": "HumanEval/37", "passed": true, "latency_s": 7.679539562999707, "completion_tokens": 203}
+{"task_id": "HumanEval/40", "passed": true, "latency_s": 3.31537949199992, "completion_tokens": 87}
+{"task_id": "HumanEval/41", "passed": true, "latency_s": 5.936223494998558, "completion_tokens": 158}
+{"task_id": "HumanEval/39", "passed": true, "latency_s": 10.42471418399873, "completion_tokens": 275}
+{"task_id": "HumanEval/42", "passed": true, "latency_s": 4.842667362001521, "completion_tokens": 127}
+{"task_id": "HumanEval/43", "passed": true, "latency_s": 7.377217709003162, "completion_tokens": 196}
+{"task_id": "HumanEval/45", "passed": true, "latency_s": 2.068452231000265, "completion_tokens": 53}
+{"task_id": "HumanEval/44", "passed": true, "latency_s": 5.819043678999151, "completion_tokens": 153}
+{"task_id": "HumanEval/46", "passed": true, "latency_s": 6.0920096800000465, "completion_tokens": 161}
+{"task_id": "HumanEval/47", "passed": true, "latency_s": 5.659983295998245, "completion_tokens": 149}
+{"task_id": "HumanEval/48", "passed": true, "latency_s": 3.165082996001729, "completion_tokens": 82}
+{"task_id": "HumanEval/49", "passed": true, "latency_s": 5.2378165679983795, "completion_tokens": 142}
+{
+  "benchmark": "direct_humaneval_50",
+  "model": "agents-a1-nvfp4",
+  "base_url": "http://127.0.0.1:18080/v1",
+  "limit": 50,
+  "concurrency": 2,
+  "started_at": "2026-07-01T19:47:04.871305+00:00",
+  "ended_at": "2026-07-01T19:49:32.065696+00:00",
+  "passed": 48,
+  "total": 50,
+  "pass_at_1": 0.96,
+  "total_completion_tokens": 7605,
+  "avg_latency_s": 5.765181397620036,
+  "telemetry_summary": {
+    "power_w": {
+      "avg": 27.728472222222223,
+      "max": 30.6,
+      "samples": 72
+    },
+    "util_gpu_pct": {
+      "avg": 73.70833333333333,
+      "max": 96.0,
+      "samples": 72
+    },
+    "temp_c": {
+      "avg": 60.083333333333336,
+      "max": 63.0,
+      "samples": 72
+    }
+  }
+}

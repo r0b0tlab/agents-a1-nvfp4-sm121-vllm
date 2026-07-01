@@ -1,0 +1,31 @@
+{
+  "benchmark": "direct_humaneval_50",
+  "model": "agents-a1-nvfp4",
+  "base_url": "http://127.0.0.1:18080/v1",
+  "limit": 50,
+  "concurrency": 2,
+  "started_at": "2026-07-01T19:47:04.871305+00:00",
+  "ended_at": "2026-07-01T19:49:32.065696+00:00",
+  "passed": 48,
+  "total": 50,
+  "pass_at_1": 0.96,
+  "total_completion_tokens": 7605,
+  "avg_latency_s": 5.765181397620036,
+  "telemetry_summary": {
+    "power_w": {
+      "avg": 27.728472222222223,
+      "max": 30.6,
+      "samples": 72
+    },
+    "util_gpu_pct": {
+      "avg": 73.70833333333333,
+      "max": 96.0,
+      "samples": 72
+    },
+    "temp_c": {
+      "avg": 60.083333333333336,
+      "max": 63.0,
+      "samples": 72
+    }
+  }
+}

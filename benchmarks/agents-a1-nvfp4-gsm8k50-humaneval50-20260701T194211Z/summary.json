@@ -1,0 +1,105 @@
+{
+  "artifact_dir": "/home/r0b0tdgx/projects/agents-a1-nvfp4-sm121-vllm/benchmarks/agents-a1-nvfp4-gsm8k50-humaneval50-20260701T194211Z",
+  "model": "agents-a1-nvfp4",
+  "endpoint": "http://127.0.0.1:18080/v1",
+  "server_health_after": {
+    "id": "agents-a1-nvfp4",
+    "object": "model",
+    "created": 1782935698,
+    "owned_by": "vllm",
+    "root": "/models/Agents-A1-NVFP4",
+    "parent": null,
+    "max_model_len": 4096,
+    "permission": [
+      {
+        "id": "modelperm-95d6b5f9e41f5e80",
+        "object": "model_permission",
+        "created": 1782935698,
+        "allow_create_engine": false,
+        "allow_sampling": true,
+        "allow_logprobs": true,
+        "allow_search_indices": false,
+        "allow_view": true,
+        "allow_fine_tuning": false,
+        "organization": "*",
+        "group": null,
+        "is_blocking": false
+      }
+    ]
+  },
+  "gsm8k_50_lm_eval": {
+    "exact_match_strict": 0.98,
+    "exact_match_flexible": 0.98,
+    "sample_len": 50
+  },
+  "humaneval_50_lm_eval_stock": {
+    "pass_at_1": 0.0,
+    "sample_len": 50,
+    "note": "stock lm-eval chat task stopped generations at def/class, preserved as harness evidence"
+  },
+  "humaneval_50_direct": {
+    "pass_at_1": 0.96,
+    "passed": 48,
+    "total": 50,
+    "concurrency": 2,
+    "avg_latency_s": 5.765181397620036,
+    "total_completion_tokens": 7605
+  },
+  "concurrency_sweep": [
+    {
+      "concurrency": 1,
+      "success": "3/3",
+      "mean_wall_s_last2": 0.17130081050163426,
+      "mean_agg_completion_tok_s_last2": 17.51519948847839,
+      "mean_completion_tokens_last2": 3.0
+    },
+    {
+      "concurrency": 2,
+      "success": "6/6",
+      "mean_wall_s_last2": 0.17792621450098522,
+      "mean_agg_completion_tok_s_last2": 33.722466192477015,
+      "mean_completion_tokens_last2": 6.0
+    },
+    {
+      "concurrency": 4,
+      "success": "12/12",
+      "mean_wall_s_last2": 0.3872721730003832,
+      "mean_agg_completion_tok_s_last2": 31.212542796200374,
+      "mean_completion_tokens_last2": 12.0
+    },
+    {
+      "concurrency": 8,
+      "success": "24/24",
+      "mean_wall_s_last2": 0.7509179235003103,
+      "mean_agg_completion_tok_s_last2": 32.13676848699953,
+      "mean_completion_tokens_last2": 24.0
+    }
+  ],
+  "telemetry_combined": {
+    "power_w": {
+      "avg": 27.881265060240946,
+      "max": 36.0,
+      "samples": 166
+    },
+    "util_gpu_pct": {
+      "avg": 70.74698795180723,
+      "max": 96.0,
+      "samples": 166
+    },
+    "temp_c": {
+      "avg": 58.83132530120482,
+      "max": 65.0,
+      "samples": 166
+    }
+  },
+  "artifacts": {
+    "manifest": "/home/r0b0tdgx/projects/agents-a1-nvfp4-sm121-vllm/benchmarks/agents-a1-nvfp4-gsm8k50-humaneval50-20260701T194211Z/manifest.json",
+    "gsm8k_log": "/home/r0b0tdgx/projects/agents-a1-nvfp4-sm121-vllm/benchmarks/agents-a1-nvfp4-gsm8k50-humaneval50-20260701T194211Z/gsm8k_50.log",
+    "humaneval_lmeval_log": "/home/r0b0tdgx/projects/agents-a1-nvfp4-sm121-vllm/benchmarks/agents-a1-nvfp4-gsm8k50-humaneval50-20260701T194211Z/humaneval_50.log",
+    "direct_humaneval_log": "/home/r0b0tdgx/projects/agents-a1-nvfp4-sm121-vllm/benchmarks/agents-a1-nvfp4-gsm8k50-humaneval50-20260701T194211Z/direct_humaneval50.log",
+    "telemetry_gpu": "/home/r0b0tdgx/projects/agents-a1-nvfp4-sm121-vllm/benchmarks/agents-a1-nvfp4-gsm8k50-humaneval50-20260701T194211Z/telemetry_gpu.csv",
+    "telemetry_gpu_direct_humaneval": "/home/r0b0tdgx/projects/agents-a1-nvfp4-sm121-vllm/benchmarks/agents-a1-nvfp4-gsm8k50-humaneval50-20260701T194211Z/telemetry_gpu_direct_humaneval.csv",
+    "concurrency_sweep": "/home/r0b0tdgx/projects/agents-a1-nvfp4-sm121-vllm/benchmarks/agents-a1-nvfp4-gsm8k50-humaneval50-20260701T194211Z/concurrency_sweep.json",
+    "manifest_sha256": "/home/r0b0tdgx/projects/agents-a1-nvfp4-sm121-vllm/benchmarks/agents-a1-nvfp4-gsm8k50-humaneval50-20260701T194211Z/MANIFEST.sha256"
+  }
+}
