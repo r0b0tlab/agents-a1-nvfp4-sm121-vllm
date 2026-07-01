@@ -84,14 +84,35 @@ Rationale:
 
 This release is a quantized checkpoint, not a new fine-tune. It does **not** claim quality improvement over BF16.
 
-Initial validation should check:
+Runtime smoke testing on NVIDIA GB10 / SM121 completed with the companion container recipe at [`r0b0tlab/agents-a1-nvfp4-sm121-vllm`](https://github.com/r0b0tlab/agents-a1-nvfp4-sm121-vllm).
 
-1. Text generation sanity.
-2. Tool-call formatting sanity.
-3. Vision prompt sanity if using multimodal inputs.
-4. Runtime compatibility with the selected inference engine.
+Validated evidence includes:
 
-Serving commands will be added only after runtime smoke testing on the target engine.
+1. Container audit on NVIDIA GB10 with CUDA capability `[12, 1]`.
+2. vLLM extension imports: `vllm._C`, `vllm._C_stable_libtorch`, `vllm._moe_C`.
+3. Native FP4 support checks: `cutlass_scaled_mm_supports_fp4(121)` and `(120)` return `true`.
+4. Runtime log selection of `FlashInferCutlassNvFp4LinearKernel` and `FLASHINFER_CUTLASS` for NVFP4/MoE.
+5. OpenAI-compatible `/v1/models` and `/v1/chat/completions` probes against the running container.
+
+### SM121 container quick start
+
+```bash
+docker run --rm --gpus all --ipc=host \
+  --name agents-a1-nvfp4-vllm \
+  -p 18080:8000 \
+  -e MODEL_ID=r0b0tlab/Agents-A1-NVFP4 \
+  ghcr.io/r0b0tlab/agents-a1-nvfp4-sm121-vllm:latest
+```
+
+For fully pinned local reproduction, clone/download this model and mount it read-only:
+
+```bash
+docker run --rm --gpus all --ipc=host \
+  --name agents-a1-nvfp4-vllm \
+  -p 18080:8000 \
+  -v /path/to/Agents-A1-NVFP4:/models/Agents-A1-NVFP4:ro \
+  ghcr.io/r0b0tlab/agents-a1-nvfp4-sm121-vllm:latest
+```
 
 ## Limitations
 
