@@ -34,7 +34,6 @@ exec /usr/bin/python3 -m vllm.entrypoints.openai.api_server \
   --max-num-batched-tokens "${MAX_NUM_BATCHED_TOKENS:-4096}" \
   --trust-remote-code \
   --language-model-only \
-  --enforce-eager \
   --enable-auto-tool-choice \
   --tool-call-parser "${TOOL_CALL_PARSER:-qwen3_coder}" \
   --reasoning-parser "${REASONING_PARSER:-qwen3}" \

@@ -1,0 +1,36 @@
+{
+  "runs": [
+    {
+      "wall_s": 5.409248352050781,
+      "prompt_tokens": 13,
+      "completion_tokens": 128,
+      "text": "1. Start with the sentence: \"GPU inference throughput is limited by the number o"
+    },
+    {
+      "wall_s": 5.37682318687439,
+      "prompt_tokens": 13,
+      "completion_tokens": 128,
+      "text": "1. Start with the sentence: \"GPU inference throughput is often limited by the nu"
+    },
+    {
+      "wall_s": 5.387528657913208,
+      "prompt_tokens": 13,
+      "completion_tokens": 128,
+      "text": "1. Start with the sentence: \"GPU inference throughput is limited by the number o"
+    }
+  ],
+  "metrics_delta": {
+    "vllm:generation_tokens_total": 384.0,
+    "vllm:prompt_tokens_total": 39.0,
+    "vllm:spec_decode_num_accepted_tokens_created": 0.0,
+    "vllm:spec_decode_num_accepted_tokens_per_pos_created": 0.0,
+    "vllm:spec_decode_num_accepted_tokens_per_pos_total": 0.0,
+    "vllm:spec_decode_num_accepted_tokens_total": 0.0,
+    "vllm:spec_decode_num_draft_tokens_created": 0.0,
+    "vllm:spec_decode_num_draft_tokens_total": 381.0,
+    "vllm:spec_decode_num_drafts_created": 0.0,
+    "vllm:spec_decode_num_drafts_total": 381.0
+  },
+  "avg_decode_client_tps": 23.742543229489062,
+  "avg_wall_s": 5.391200065612793
+}
