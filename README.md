@@ -42,6 +42,7 @@ See the model card in `huggingface/README.md` for the exact exclusion list and H
 ├── evidence/
 │   ├── container-audit/              # build and runtime audit logs
 │   └── runtime/                      # serving logs and API probes
+├── benchmarks/                       # GSM8K, HumanEval, telemetry, concurrency evidence
 └── huggingface/README.md             # model card used for upload
 ```
 
@@ -53,6 +54,7 @@ See the model card in `huggingface/README.md` for the exact exclusion list and H
 | Hugging Face model | https://huggingface.co/r0b0tlab/Agents-A1-NVFP4 |
 | Container image | `ghcr.io/r0b0tlab/agents-a1-nvfp4-sm121-vllm:latest` |
 | Image digest | `sha256:89a686b38a3831e540ecab17043f44df7bdc3cb49ee04f59e5b0e1b86c474edc` |
+| Benchmark evidence | `benchmarks/agents-a1-nvfp4-gsm8k50-humaneval50-20260701T194211Z/` |
 
 ## Build
 
@@ -122,6 +124,35 @@ curl -s http://127.0.0.1:18080/v1/chat/completions \
     "max_tokens":8
   }' | python3 -m json.tool
 ```
+
+## Benchmark evidence
+
+The live `agents-a1-nvfp4-vllm` container at `http://127.0.0.1:18080/v1` was evaluated with a lightweight benchmark suite rather than the full Hermes bench. The run preserved raw lm-eval outputs, direct HumanEval traces, telemetry, concurrency data, a summary, and `MANIFEST.sha256` under `benchmarks/agents-a1-nvfp4-gsm8k50-humaneval50-20260701T194211Z/`.
+
+| Suite | Harness | Samples | Result | Notes |
+|---|---:|---:|---:|---|
+| GSM8K | lm-eval `gsm8k` | 50 | strict 98.00%, flexible 98.00% | `num_concurrent=2`, thinking disabled |
+| HumanEval | direct OpenAI-compatible evaluator | 50 | 48/50 (96.00%) | code extracted/evaluated locally, `num_concurrent=2` |
+| HumanEval | stock lm-eval `humaneval` | 50 | 0.00% | preserved as harness-interference evidence; stock stop rules truncate chat-model function output |
+
+Concurrency sweep results use a short chat-completion prompt, three reps per level, and the mean of the last two reps:
+
+| Concurrency | Success | Mean wall sec | Mean aggregate output tok/s |
+|---:|---:|---:|---:|
+| c1 | 3/3 | 0.171 | 17.52 |
+| c2 | 6/6 | 0.178 | 33.72 |
+| c4 | 12/12 | 0.387 | 31.21 |
+| c8 | 24/24 | 0.751 | 32.14 |
+
+Combined telemetry across GSM8K, HumanEval, and direct HumanEval:
+
+| Metric | Avg | Max | Samples |
+|---|---:|---:|---:|
+| GPU power draw | 27.88 W | 36.00 W | 166 |
+| GPU utilization | 70.75% | 96.00% | 166 |
+| GPU temperature | 58.83°C | 65.00°C | 166 |
+
+The benchmark helper scripts were also ad-hoc verified after the run: syntax checks passed, `direct_humaneval50.py` imported without executing `main()`, `extract_code()` handled fenced and completion-style outputs, `evaluate()` accepted a known-good candidate and rejected a known-bad candidate, benchmark artifact counts matched the expected 50+50 samples, and `/v1/models` still returned `agents-a1-nvfp4` with `max_model_len=4096`. This is focused ad-hoc verification, not a canonical repo-wide green suite claim.
 
 ## Environment overrides
 

@@ -93,6 +93,19 @@ Validated evidence includes:
 3. Native FP4 support checks: `cutlass_scaled_mm_supports_fp4(121)` and `(120)` return `true`.
 4. Runtime log selection of `FlashInferCutlassNvFp4LinearKernel` and `FLASHINFER_CUTLASS` for NVFP4/MoE.
 5. OpenAI-compatible `/v1/models` and `/v1/chat/completions` probes against the running container.
+6. Lightweight live-container benchmark evidence in the companion repo: GSM8K 50-question lm-eval run at 98.00% exact match, direct HumanEval 50-question run at 48/50 (96.00%), c1/c2/c4/c8 concurrency sweep with 100% request success, and GPU telemetry including power draw.
+
+### Benchmark snapshot
+
+The benchmark run `agents-a1-nvfp4-gsm8k50-humaneval50-20260701T194211Z` used the live OpenAI-compatible endpoint at `http://127.0.0.1:18080/v1` with `chat_template_kwargs.enable_thinking=false` for scored requests.
+
+| Suite | Harness | Samples | Result | Notes |
+|---|---:|---:|---:|---|
+| GSM8K | lm-eval `gsm8k` | 50 | strict 98.00%, flexible 98.00% | `num_concurrent=2` |
+| HumanEval | direct OpenAI-compatible evaluator | 50 | 48/50 (96.00%) | code extracted/evaluated locally |
+| HumanEval | stock lm-eval `humaneval` | 50 | 0.00% | preserved as harness-interference evidence; stock stop rules truncate chat-model output |
+
+Combined telemetry across GSM8K, HumanEval, and direct HumanEval averaged 27.88 W GPU power draw, 70.75% GPU utilization, and 58.83°C, with maxima of 36.00 W, 96.00%, and 65.00°C over 166 telemetry samples. The c8 concurrency sweep completed 24/24 requests successfully. See the companion repo's `benchmarks/agents-a1-nvfp4-gsm8k50-humaneval50-20260701T194211Z/` directory for raw logs, samples, summaries, telemetry CSVs, and `MANIFEST.sha256`.
 
 ### SM121 container quick start
 
