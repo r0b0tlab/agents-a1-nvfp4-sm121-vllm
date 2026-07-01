@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Agents-A1 NVFP4 Benchmark Evidence</title>
+<style>
+:root{--bg:#050510;--panel:#0c0d16;--panel2:#11131f;--ink:#f5f7fb;--muted:#a5adbd;--line:#242838;--green:#62f0a1;--cyan:#68d8ff;--violet:#a78bfa;--amber:#ffd166;--shadow:0 24px 70px rgba(0,0,0,.42);--radius:24px}*{box-sizing:border-box}html{background:var(--bg);color:var(--ink);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}body{margin:0;min-height:100vh;background:var(--bg)}a{color:var(--cyan);text-decoration:none}.wrap{width:min(1180px,calc(100% - 28px));margin:0 auto;padding:22px 0 44px}.hero{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:30px;padding:clamp(22px,5vw,54px);background:linear-gradient(180deg,#0b0d16 0%,#070812 100%);box-shadow:var(--shadow)}.hero:after{content:"";position:absolute;inset:auto -120px -160px auto;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(98,240,161,.18),transparent 62%);pointer-events:none}.eyebrow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;color:var(--muted);font-size:13px;letter-spacing:.12em;text-transform:uppercase}.pill{display:inline-flex;align-items:center;min-height:28px;padding:5px 10px;border:1px solid #293044;border-radius:999px;background:#0b0d17;color:#c9d2e3}h1{margin:18px 0 10px;font-size:clamp(34px,8vw,86px);line-height:.9;letter-spacing:-.065em;text-wrap:balance}.grad{background:linear-gradient(90deg,var(--green),var(--cyan),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}.sub{max-width:780px;margin:0;color:#c7cedc;font-size:clamp(16px,2.2vw,21px);line-height:1.55}.hero-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:24px}.kpi{border:1px solid var(--line);border-radius:22px;background:rgba(255,255,255,.035);padding:18px}.kpi b{display:block;font-size:clamp(34px,9vw,62px);letter-spacing:-.06em;line-height:.9}.kpi span{display:block;margin-top:8px;color:var(--muted);font-size:14px}section{margin-top:22px}.section-title{display:flex;align-items:end;justify-content:space-between;gap:16px;margin:0 0 12px}h2{margin:0;font-size:clamp(22px,4vw,38px);letter-spacing:-.04em}.note{color:var(--muted);font-size:14px;line-height:1.45}.cards{display:grid;grid-template-columns:1fr;gap:12px}.card{border:1px solid var(--line);border-radius:var(--radius);background:var(--panel);padding:18px;box-shadow:0 10px 32px rgba(0,0,0,.18);min-width:0}.topline-green{border-top:3px solid var(--green)}.topline-cyan{border-top:3px solid var(--cyan)}.topline-violet{border-top:3px solid var(--violet)}.topline-amber{border-top:3px solid var(--amber)}.label{color:var(--muted);font-size:13px;text-transform:uppercase;letter-spacing:.1em}.metric{font-size:clamp(32px,8vw,54px);line-height:1;letter-spacing:-.055em;margin:10px 0 6px;font-weight:800}.card p{margin:0;color:#c6cedd;line-height:1.5}dl{display:grid;grid-template-columns:1fr auto;gap:8px 14px;margin:16px 0 0}dt{color:var(--muted)}dd{margin:0;font-weight:700;text-align:right}.concurrency{display:grid;grid-template-columns:1fr;gap:10px}.crow{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;padding:14px;border:1px solid var(--line);border-radius:18px;background:var(--panel2)}.cbadge{width:46px;height:46px;display:grid;place-items:center;border-radius:14px;background:#0a1214;color:var(--green);font-weight:800}.bar{height:10px;border-radius:999px;background:#202637;overflow:hidden}.bar i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--green),var(--cyan))}.ctext{color:var(--muted);font-size:13px}.chart-card{min-height:310px}canvas{width:100%;height:230px;display:block}.evidence{display:grid;gap:10px}.evidence code{display:block;white-space:normal;overflow-wrap:anywhere;padding:12px;border:1px solid var(--line);border-radius:14px;background:#070914;color:#dce7f7}.callout{border:1px solid rgba(255,209,102,.35);background:rgba(255,209,102,.065);border-radius:22px;padding:16px;color:#f4dfae;line-height:1.5}.footer{margin-top:24px;color:var(--muted);font-size:13px;display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;border-top:1px solid var(--line);padding-top:18px}@media (min-width:760px){.hero-grid{grid-template-columns:repeat(3,1fr)}.cards.three{grid-template-columns:repeat(3,1fr)}.cards.two{grid-template-columns:1.1fr .9fr}.concurrency{grid-template-columns:repeat(2,1fr)}}@media (min-width:1020px){.cards.four{grid-template-columns:repeat(4,1fr)}}@media (max-width:420px){.wrap{width:min(100% - 18px,390px)}.hero{border-radius:24px}.crow{grid-template-columns:auto 1fr}.crow .metric-small{grid-column:1/-1}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header class="hero">
+    <div class="eyebrow"><span class="pill">r0b0tlab evidence board</span><span class="pill">Agents-A1 NVFP4</span><span class="pill">GB10 / SM121</span></div>
+    <h1><span class="grad">98% GSM8K</span><br>and 96% direct HumanEval</h1>
+    <p class="sub">Lightweight live-container benchmark for the SM121-native ModelOpt NVFP4 serve. Results are backed by raw samples, telemetry CSVs, concurrency traces, and a SHA256 manifest.</p>
+    <div class="hero-grid"><div class="kpi"><b>98.0%</b><span>GSM8K exact match, 50 samples</span></div><div class="kpi"><b>48/50</b><span>Direct HumanEval pass@1</span></div><div class="kpi"><b>c8 24/24</b><span>Concurrency sweep request success</span></div></div>
+  </header>
+  <section>
+    <div class="section-title"><h2>Score cards</h2><span class="note">Scored through the live OpenAI-compatible vLLM endpoint with thinking disabled for benchmark requests.</span></div>
+    <div class="cards three">
+      <article class="card topline-green"><div class="label">GSM8K / lm-eval</div><div class="metric">98.0%</div><p>Strict and flexible exact match both scored 98.0% across 50 grade-school math questions.</p><dl><dt>Samples</dt><dd>50</dd><dt>Harness</dt><dd>lm-eval</dd><dt>Concurrency</dt><dd>2</dd></dl></article>
+      <article class="card topline-cyan"><div class="label">HumanEval / direct</div><div class="metric">96.0%</div><p>Direct evaluator extracted executable Python and ran tests locally: 48 passing tasks out of 50.</p><dl><dt>Avg latency</dt><dd>5.77s</dd><dt>Output tokens</dt><dd>7,605</dd><dt>Concurrency</dt><dd>2</dd></dl></article>
+      <article class="card topline-amber"><div class="label">HumanEval / stock lm-eval</div><div class="metric">0.0%</div><p>Preserved as harness-interference evidence: default stop rules truncate chat-model function output at <code>def</code>/<code>class</code>.</p><dl><dt>Samples</dt><dd>50</dd><dt>Use as</dt><dd>caveat</dd><dt>Canonical here</dt><dd>direct</dd></dl></article>
+    </div>
+  </section>
+  <section>
+    <div class="section-title"><h2>Concurrency scaling</h2><span class="note">Short chat-completion sweep; three reps per level, mean of the last two reps shown.</span></div>
+    <div class="cards two">
+      <article class="card chart-card"><canvas id="concChart" aria-label="Concurrency throughput chart"></canvas></article>
+      <div class="concurrency">
+        <div class="crow"><span class="cbadge">c1</span><div><div class="bar"><i style="width:51.5%"></i></div><div class="ctext">3/3 successful requests</div></div><strong class="metric-small">17.52 tok/s</strong></div>
+        <div class="crow"><span class="cbadge">c2</span><div><div class="bar"><i style="width:99.2%"></i></div><div class="ctext">6/6 successful requests</div></div><strong class="metric-small">33.72 tok/s</strong></div>
+        <div class="crow"><span class="cbadge">c4</span><div><div class="bar"><i style="width:91.8%"></i></div><div class="ctext">12/12 successful requests</div></div><strong class="metric-small">31.21 tok/s</strong></div>
+        <div class="crow"><span class="cbadge">c8</span><div><div class="bar"><i style="width:94.5%"></i></div><div class="ctext">24/24 successful requests</div></div><strong class="metric-small">32.14 tok/s</strong></div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="section-title"><h2>Telemetry</h2><span class="note">Combined across GSM8K, stock HumanEval, and direct HumanEval.</span></div>
+    <div class="cards three">
+      <article class="card topline-green"><div class="label">GPU power draw</div><div class="metric">27.88 W</div><p>Average; peak 36.00 W across 166 samples.</p></article>
+      <article class="card topline-cyan"><div class="label">GPU utilization</div><div class="metric">70.75%</div><p>Average; peak 96.00%.</p></article>
+      <article class="card topline-violet"><div class="label">GPU temperature</div><div class="metric">58.83°C</div><p>Average; peak 65.00°C.</p></article>
+    </div>
+  </section>
+  <section>
+    <div class="cards two">
+      <article class="card"><h2>Runtime proof</h2><dl><dt>Model</dt><dd>agents-a1-nvfp4</dd><dt>Runtime</dt><dd>vLLM OpenAI-compatible</dd><dt>Max model len</dt><dd>4096</dd><dt>Commit</dt><dd>3acc521</dd></dl></article>
+      <article class="card"><h2>Claim boundary</h2><div class="callout">This page reports a lightweight 50-question GSM8K + 50-question HumanEval benchmark, not a full Hermes benchmark or BF16-vs-NVFP4 parity study. Script checks are focused ad-hoc verification, not a repo-wide canonical green suite.</div></article>
+    </div>
+  </section>
+  <section class="card"><h2>Evidence files</h2><div class="evidence"><code>summary.json · manifest.json · MANIFEST.sha256</code><code>gsm8k_50.log · humaneval_50.log · direct_humaneval50.log</code><code>direct_humaneval50_results.jsonl · concurrency_sweep.json</code><code>telemetry_gpu.csv · telemetry_gpu_direct_humaneval.csv · telemetry_system.csv</code></div></section>
+  <footer class="footer"><span>@mr-r0b0t — r0b0tlab</span><span>Generated from run agents-a1-nvfp4-gsm8k50-humaneval50-20260701T194211Z</span></footer>
+</main>
+<script>
+const DATA=[{"concurrency":1,"mean_agg_completion_tok_s_last2":17.51519948847839},{"concurrency":2,"mean_agg_completion_tok_s_last2":33.722466192477015},{"concurrency":4,"mean_agg_completion_tok_s_last2":31.212542796200374},{"concurrency":8,"mean_agg_completion_tok_s_last2":32.13676848699953}];
+function roundRect(ctx,x,y,w,h,r){const rr=Math.min(r,w/2,h/2);ctx.beginPath();ctx.moveTo(x+rr,y);ctx.arcTo(x+w,y,x+w,y+h,rr);ctx.arcTo(x+w,y+h,x,y+h,rr);ctx.arcTo(x,y+h,x,y,rr);ctx.arcTo(x,y,x+w,y,rr);ctx.closePath()}
+function drawChart(){const canvas=document.getElementById('concChart');const ctx=canvas.getContext('2d');const dpr=window.devicePixelRatio||1;const rect=canvas.getBoundingClientRect();canvas.width=Math.max(320,rect.width)*dpr;canvas.height=230*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);const w=rect.width,h=230,pad=34;ctx.clearRect(0,0,w,h);const max=Math.max(...DATA.map(d=>d.mean_agg_completion_tok_s_last2))*1.16;ctx.strokeStyle='#242838';ctx.lineWidth=1;for(let i=0;i<4;i++){const y=pad+i*(h-pad*2)/3;ctx.beginPath();ctx.moveTo(pad,y);ctx.lineTo(w-pad,y);ctx.stroke()}const bw=(w-pad*2)/DATA.length*.52;DATA.forEach((d,i)=>{const x=pad+i*(w-pad*2)/DATA.length+((w-pad*2)/DATA.length-bw)/2;const bh=(h-pad*2)*d.mean_agg_completion_tok_s_last2/max;const y=h-pad-bh;const g=ctx.createLinearGradient(0,y,0,h-pad);g.addColorStop(0,'#68d8ff');g.addColorStop(1,'#62f0a1');ctx.fillStyle=g;roundRect(ctx,x,y,bw,bh,10);ctx.fill();ctx.fillStyle='#a5adbd';ctx.font='12px ui-sans-serif, system-ui';ctx.textAlign='center';ctx.fillText('c'+d.concurrency,x+bw/2,h-10);ctx.fillStyle='#f5f7fb';ctx.font='700 13px ui-sans-serif, system-ui';ctx.fillText(d.mean_agg_completion_tok_s_last2.toFixed(1),x+bw/2,y-8)})}
+window.addEventListener('resize',drawChart);drawChart();
+</script>
+</body>
+</html>
