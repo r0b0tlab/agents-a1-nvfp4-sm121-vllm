@@ -1,0 +1,153 @@
+# Agents-A1 NVFP4 SM121 vLLM Container
+
+Reproducible SM121 / NVIDIA GB10 container recipe for serving the NVIDIA ModelOpt NVFP4 quantization of [`InternScience/Agents-A1`](https://huggingface.co/InternScience/Agents-A1) with vLLM-compatible OpenAI endpoints.
+
+This repository is intentionally evidence-first: it documents the model artifact, the native NVFP4 runtime gates, the exact container entrypoint, and the commands used to prove the service is running.
+
+## What this is
+
+- **Base model:** `InternScience/Agents-A1`
+- **Quantized checkpoint:** `r0b0tlab/Agents-A1-NVFP4`
+- **Runtime target:** NVIDIA GB10 / SM121 (`compute capability 12.1`)
+- **Quantization format:** NVIDIA ModelOpt NVFP4 / `modelopt`, group size 16
+- **Serving API:** vLLM OpenAI-compatible server
+- **Default mode:** text-only serving via `--language-model-only`
+
+## What this is not
+
+- It is not a fine-tune or behavior improvement over the base model.
+- It is not a generic CUDA image for older GPUs.
+- It is not a fallback/Marlin/emulation container. The publish gate requires native SM121 NVFP4 runtime evidence.
+
+## Quantization policy
+
+Agents-A1 is a Qwen3.5 MoE agentic model with hybrid linear-attention/full-attention layers and a vision tower. The first NVFP4 release uses an **MLP/MoE-only** ModelOpt policy:
+
+- Quantized: MoE/MLP expert weights where ModelOpt marks them NVFP4.
+- Preserved in BF16: `visual*`, `linear_attn*`, `self_attn*`, embeddings, `lm_head`, shared expert gates, and MTP-sensitive modules.
+
+See the model card in `huggingface/README.md` for the exact exclusion list and Hugging Face metadata.
+
+## Repository layout
+
+```text
+.
+├── AGENTS.md                         # hard gates for future agents
+├── README.md                         # this file
+├── docker/Dockerfile                 # derivative SM121 runtime image
+├── scripts/
+│   ├── audit_runtime.py              # strict import / FP4 / artifact scan
+│   ├── healthcheck.sh                # /v1/models healthcheck
+│   └── start_agents_a1.sh            # container entrypoint
+├── evidence/
+│   ├── container-audit/              # build and runtime audit logs
+│   └── runtime/                      # serving logs and API probes
+└── huggingface/README.md             # model card used for upload
+```
+
+## Build
+
+```bash
+docker build \
+  -t ghcr.io/r0b0tlab/agents-a1-nvfp4-sm121-vllm:latest \
+  -f docker/Dockerfile .
+```
+
+The Dockerfile derives from the current r0b0tlab SM121 NVFP4 vLLM runtime and removes packaged fallback FlashAttention/Marlin artifacts that are not part of the publishable Agents-A1 text-only path.
+
+## Audit the image
+
+```bash
+docker run --rm --gpus all \
+  ghcr.io/r0b0tlab/agents-a1-nvfp4-sm121-vllm:latest audit
+```
+
+Expected gates:
+
+- `cuda_capability` is `[12, 1]`
+- `vllm._C`, `vllm._C_stable_libtorch`, `vllm._moe_C` import
+- `cutlass_scaled_mm_supports_fp4(121)` is `true`
+- no `_vllm_fa2_C`, `_vllm_fa3_C`, or `*marlin*.so` artifacts are packaged
+
+## Serve local checkpoint
+
+```bash
+docker run --rm --gpus all --ipc=host \
+  --name agents-a1-nvfp4-vllm \
+  -p 18080:8000 \
+  -v /home/r0b0tdgx/work/agents-a1-nvfp4/Agents-A1-NVFP4:/models/Agents-A1-NVFP4:ro \
+  ghcr.io/r0b0tlab/agents-a1-nvfp4-sm121-vllm:latest
+```
+
+Default entrypoint args:
+
+```text
+--model /models/Agents-A1-NVFP4
+--served-model-name agents-a1-nvfp4
+--quantization modelopt
+--kv-cache-dtype fp8
+--attention-backend flashinfer
+--moe-backend flashinfer_cutlass
+--gpu-memory-utilization 0.70
+--max-model-len 4096
+--max-num-seqs 2
+--max-num-batched-tokens 4096
+--trust-remote-code
+--language-model-only
+--enforce-eager
+--enable-auto-tool-choice
+--tool-call-parser qwen3_coder
+--reasoning-parser qwen3
+```
+
+## Probe
+
+```bash
+curl -s http://127.0.0.1:18080/v1/models | python3 -m json.tool
+
+curl -s http://127.0.0.1:18080/v1/chat/completions \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "model":"agents-a1-nvfp4",
+    "messages":[{"role":"user","content":"Say READY and nothing else."}],
+    "max_tokens":8
+  }' | python3 -m json.tool
+```
+
+## Environment overrides
+
+| Variable | Default | Meaning |
+|---|---:|---|
+| `MODEL_ID` | `/models/Agents-A1-NVFP4` | HF ID or mounted checkpoint path |
+| `SERVED_MODEL_NAME` | `agents-a1-nvfp4` | OpenAI model name |
+| `PORT` | `8000` | Container HTTP port |
+| `MAX_MODEL_LEN` | `4096` | Context length for smoke serving |
+| `MAX_NUM_SEQS` | `2` | Conservative GB10 smoke default |
+| `GPU_MEMORY_UTILIZATION` | `0.70` | VRAM cap |
+| `KV_CACHE_DTYPE` | `fp8` | KV cache dtype |
+| `EXTRA_ARGS` | empty | Additional vLLM args |
+
+## Hugging Face upload
+
+The model card is staged at `huggingface/README.md`. To make the quantization appear under the base model's Quantizations section, the card must include both:
+
+```yaml
+base_model: InternScience/Agents-A1
+tags:
+  - base_model:InternScience/Agents-A1
+  - base_model:quantized:InternScience/Agents-A1
+```
+
+Upload pattern:
+
+```bash
+hf repos create r0b0tlab/Agents-A1-NVFP4 --type model --public --exist-ok --token "$HF_TOKEN"
+hf upload r0b0tlab/Agents-A1-NVFP4 /home/r0b0tdgx/work/agents-a1-nvfp4/Agents-A1-NVFP4 . --repo-type model --token "$HF_TOKEN"
+```
+
+## Credits
+
+- InternScience for `Agents-A1`.
+- NVIDIA for ModelOpt and NVFP4 tooling.
+- vLLM, FlashInfer, CUTLASS, PyTorch, Hugging Face Transformers, and Safetensors for the runtime ecosystem.
+- r0b0tlab for the GB10/SM121 validation and packaging.

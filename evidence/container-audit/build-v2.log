@@ -1,0 +1,44 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 2.93kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for ghcr.io/r0b0tlab/vllm-laguna-m1-nvfp4-sm121:latest
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/6] FROM ghcr.io/r0b0tlab/vllm-laguna-m1-nvfp4-sm121:latest
+#4 CACHED
+
+#5 [internal] load build context
+#5 transferring context: 161B done
+#5 DONE 0.0s
+
+#6 [2/6] RUN set -eux;     rm -f /usr/local/lib/python3.12/dist-packages/vllm/vllm_flash_attn/_vllm_fa2_C*.so;     rm -f /usr/local/lib/python3.12/dist-packages/vllm/vllm_flash_attn/_vllm_fa3_C*.so;     find /usr/local/lib/python3.12/dist-packages -iname '*marlin*.so' -delete;     /usr/bin/python3 - <<'PY'
+#6 0.141 + rm -f /usr/local/lib/python3.12/dist-packages/vllm/vllm_flash_attn/_vllm_fa2_C.abi3.so
+#6 0.164 + rm -f /usr/local/lib/python3.12/dist-packages/vllm/vllm_flash_attn/_vllm_fa3_C.abi3.so
+#6 0.165 + find /usr/local/lib/python3.12/dist-packages -iname *marlin*.so -delete
+#6 0.258 + /usr/bin/python3 -
+#6 DONE 0.3s
+
+#7 [3/6] COPY scripts/start_agents_a1.sh /usr/local/bin/start_agents_a1.sh
+#7 DONE 0.1s
+
+#8 [4/6] COPY scripts/healthcheck.sh /usr/local/bin/healthcheck.sh
+#8 DONE 0.1s
+
+#9 [5/6] COPY scripts/audit_runtime.py /usr/local/bin/audit_runtime.py
+#9 DONE 0.1s
+
+#10 [6/6] RUN chmod +x /usr/local/bin/start_agents_a1.sh /usr/local/bin/healthcheck.sh /usr/local/bin/audit_runtime.py
+#10 DONE 0.2s
+
+#11 exporting to image
+#11 exporting layers 0.1s done
+#11 writing image sha256:658087f740d0ff032bbd4dcd78b842243dc280c9d46f37fb2aa4bc7f2f5d05e6 done
+#11 naming to ghcr.io/r0b0tlab/agents-a1-nvfp4-sm121-vllm:latest done
+#11 DONE 0.1s

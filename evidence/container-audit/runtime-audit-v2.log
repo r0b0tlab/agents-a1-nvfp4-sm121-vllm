@@ -1,0 +1,30 @@
+{
+  "cuda_available": true,
+  "cuda_capability": [
+    12,
+    1
+  ],
+  "cuda_device": "NVIDIA GB10",
+  "env": {
+    "CUTE_DSL_ARCH": "sm_121a",
+    "VLLM_FP8_MOE_BACKEND": "flashinfer_cutlass",
+    "VLLM_NVFP4_GEMM_BACKEND": "flashinfer-cutlass"
+  },
+  "fallback_artifacts": {
+    "*_vllm_fa2_C*.so": [],
+    "*_vllm_fa3_C*.so": [],
+    "*marlin*.so": []
+  },
+  "fp4_support": {
+    "120": true,
+    "121": true
+  },
+  "imports": {
+    "vllm._C": "ok",
+    "vllm._C_stable_libtorch": "ok",
+    "vllm._moe_C": "ok"
+  },
+  "torch_version": "2.11.0+cu130",
+  "vllm_version": "0.1.dev16581+gdda4668b5.d20260528"
+}
+AUDIT PASS: SM121 native NVFP4 runtime gates satisfied
