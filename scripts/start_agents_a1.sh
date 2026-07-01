@@ -14,6 +14,11 @@ fi
 
 /usr/bin/python3 /usr/local/bin/audit_runtime.py
 
+SPEC_ARGS=()
+if [[ -n "${SPECULATIVE_CONFIG:-}" ]]; then
+  SPEC_ARGS+=(--speculative-config "${SPECULATIVE_CONFIG}")
+fi
+
 exec /usr/bin/python3 -m vllm.entrypoints.openai.api_server \
   --host "${HOST:-0.0.0.0}" \
   --port "${PORT:-8000}" \
@@ -33,4 +38,5 @@ exec /usr/bin/python3 -m vllm.entrypoints.openai.api_server \
   --enable-auto-tool-choice \
   --tool-call-parser "${TOOL_CALL_PARSER:-qwen3_coder}" \
   --reasoning-parser "${REASONING_PARSER:-qwen3}" \
+  "${SPEC_ARGS[@]}" \
   ${EXTRA_ARGS:-}

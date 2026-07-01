@@ -163,9 +163,29 @@ The benchmark helper scripts were also ad-hoc verified after the run: syntax che
 | `PORT` | `8000` | Container HTTP port |
 | `MAX_MODEL_LEN` | `4096` | Context length for smoke serving |
 | `MAX_NUM_SEQS` | `2` | Conservative GB10 smoke default |
+| `MAX_NUM_BATCHED_TOKENS` | `8192` | Leaves room for one MTP draft token per sequence |
 | `GPU_MEMORY_UTILIZATION` | `0.70` | VRAM cap |
 | `KV_CACHE_DTYPE` | `fp8` | KV cache dtype |
+| `SPECULATIVE_CONFIG` | `{"method":"mtp","num_speculative_tokens":1}` | Enables the built-in Qwen3.5 MoE MTP drafter; set empty to disable |
 | `EXTRA_ARGS` | empty | Additional vLLM args |
+
+## MTP status
+
+MTP/speculative decoding is enabled by default in the container via:
+
+```bash
+--speculative-config '{"method":"mtp","num_speculative_tokens":1}'
+```
+
+Runtime evidence for the live endpoint is preserved under `evidence/mtp/`. The active-log markers to check are:
+
+- `Resolved architecture: Qwen3_5MoeMTP`
+- `speculative_config=SpeculativeConfig(method='mtp', model='/models/Agents-A1-NVFP4', num_spec_tokens=1)`
+- `Loading drafter model...`
+- `Detected MTP model. Sharing target model embedding weights with the draft model.`
+- Prometheus `/metrics` exposes `vllm:spec_decode_num_drafts_total` and `vllm:spec_decode_num_draft_tokens_total`.
+
+This is a live runtime gate, not just a config-field claim. Acceptance-rate metrics should be inspected before claiming an MTP throughput uplift.
 
 ## Hugging Face upload
 
